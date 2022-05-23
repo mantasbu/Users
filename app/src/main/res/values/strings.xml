@@ -7,7 +7,7 @@
     <string name="email">Email</string>
     <string name="cancel">Cancel</string>
     <string name="delete_user">Delete User</string>
-    <string name="delete_user_confirmation">Are you sure you want to delete the user?</string>
+    <string name="delete_user_confirmation">Are you sure you want to remove this user?</string>
     <string name="delete">Delete</string>
     <string name="load_users_failed">Couldn\'t load the users!</string>
     <string name="retry">Retry</string>
