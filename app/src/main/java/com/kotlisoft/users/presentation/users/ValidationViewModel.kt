@@ -39,8 +39,12 @@ class ValidationViewModel @Inject constructor(
     }
 
     fun clearFormFields() {
-        onEvent(FormEvent.NameChanged(""))
-        onEvent(FormEvent.EmailChanged(""))
+        state = state.copy(
+            name = "",
+            email = "",
+            nameError = null,
+            emailError = null
+        )
     }
 
     private fun submitData() {

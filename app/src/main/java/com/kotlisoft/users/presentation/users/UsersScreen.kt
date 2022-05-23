@@ -11,7 +11,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kotlisoft.users.R
 
@@ -21,21 +20,18 @@ fun UsersScreen(usersViewModel: UsersViewModel = hiltViewModel()) {
         mutableStateOf(false)
     }
     if (showAddUserDialog) {
-        Dialog(
+        AddUserDialog(
+            onAddClicked = { user ->
+                showAddUserDialog = false
+                usersViewModel.addUser(user)
+            },
             onDismissRequest = {
                 showAddUserDialog = false
+            },
+            onCancelClicked = {
+                showAddUserDialog = false
             }
-        ) {
-            AddUserDialogContent(
-                onAddClicked = { user ->
-                    showAddUserDialog = false
-                    usersViewModel.addUser(user)
-                },
-                onCancelClicked = {
-                    showAddUserDialog = false
-                }
-            )
-        }
+        )
     }
     Scaffold(
         floatingActionButton = {

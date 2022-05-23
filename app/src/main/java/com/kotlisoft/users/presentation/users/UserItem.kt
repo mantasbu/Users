@@ -40,34 +40,12 @@ fun UserItem(
         Icons.Rounded.Female
     }
     if (showConfirmationDialog) {
-        AlertDialog(
-            title = {
-                Text(text = stringResource(R.string.delete_user))
+        DeleteUserDialog(
+            onConfirmButtonClicked = {
+                showConfirmationDialog = false
+                onDeleteClicked(user)
             },
-            text = {
-               Text(text = stringResource(R.string.delete_user_confirmation))
-            },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        showConfirmationDialog = false
-                        onDeleteClicked(user)
-                    }
-                ) {
-                    Text(text = stringResource(R.string.delete))
-                }
-            },
-            dismissButton = {
-                Button(
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
-                    onClick = {
-                        showConfirmationDialog = false
-                    }
-                ) {
-                    Text(text = stringResource(id = R.string.cancel))
-                }
-            },
-            onDismissRequest = { 
+            onDismissRequest = {
                 showConfirmationDialog = false
             }
         )
